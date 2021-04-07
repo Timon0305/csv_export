@@ -18,9 +18,8 @@ export class SampleService {
 
     public actionPlaResource(){
       return this.httpClient.get(API_BASE_URL + 'ap/callReport/csv', {
-          headers: {
-              'Accept' : 'text/csv'
-          }
-      }).pipe(map(response => response))}
-
+          headers: {'Accept' : 'text/csv'}
+      }).pipe(map(response => response as Text),
+          catchError(err => err))
+  }
 }
